@@ -11,10 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * Auth routes
+ */
 
 Auth::routes();
 
+/**
+ * Language routes
+ */
+
+Route::get('/language/{language}', ['as' => 'language', 'uses' => 'LanguageController@setLanguage']);
+
+
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+
