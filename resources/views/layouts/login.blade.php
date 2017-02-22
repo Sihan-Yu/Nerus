@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="{{ \Session::get('language') }}">
 <head>
+
+    <!-- METAS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -15,11 +17,14 @@
     <link rel="stylesheet" href="/css/ionicons.min.css">
 
     <!-- iCheck -->
-    <link rel="stylesheet" href="/css/square/green.css">
+    <link rel="stylesheet" href="/css/square/blue.css">
+
+    <!-- FamFamFam Flags -->
+    <link rel="stylesheet" href="/css/flags/famfamfam-flags.css">
 
     <!-- Theme -->
     <link rel="stylesheet" href="/css/AdminLTE.css">
-    <link rel="stylesheet" href="/css/skins/skin-green.css">
+    <link rel="stylesheet" href="/css/skins/skin-blue.css">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -34,7 +39,6 @@
     </script>
 
 </head>
-
 
 <body class="hold-transition login-page">
 

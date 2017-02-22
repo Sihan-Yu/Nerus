@@ -21,8 +21,10 @@ return [
     'remember_me' => 'Remember me',
     'login' => 'Sign in',
     'cn' => '切换到中文',
+    'en' => 'Use English instead',
     'wrong_password' => 'The credentials provided are not correct.',
     'or' => 'OR',
-    'reset_password' => 'Forgot your password? Reset it.'
+    'reset_password' => 'Forgot your password? Reset it.',
+    'reset_password_title' => 'Reset password'
 
 ];

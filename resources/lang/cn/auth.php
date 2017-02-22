@@ -15,14 +15,16 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'sign_in' => 'Sign in to your account',
-    'email' => 'Email',
-    'password' => 'mima',
-    'remember_me' => 'Remember me',
-    'login' => 'Sign in',
-    'chinese' => '切换到中文',
-    'wrong_password' => 'The credentials provided are not correct.',
-    'or' => 'OR',
-    'reset_password' => 'Forgot your password? Reset it.'
+    'sign_in' => '登录到您的帐户',
+    'email' => '电子邮件',
+    'password' => '密码',
+    'remember_me' => '记得',
+    'login' => '签到',
+    'cn' => '切换到中文',
+    'en' => 'Use English instead',
+    'wrong_password' => '提供的凭据不正确',
+    'or' => '或',
+    'reset_password' => '忘记密码了吗？',
+    'reset_password_title' => 'Reset Password'
 
 ];
