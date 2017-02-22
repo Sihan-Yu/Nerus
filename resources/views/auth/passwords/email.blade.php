@@ -1,46 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
+    <p class="login-box-msg">{{ __('auth.reset_password_title') }}</p>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+    @if ($errors->has('email'))
+    <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+    @endif
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <form method="POST" role="form" action="{{ route('password.email') }}">
+        {{ csrf_field() }}
+        <div class="form-group has-feedback">
+            <input id="email" type="email" name="email" class="form-control" placeholder="{{ __('auth.email') }}">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
+
+        <div class="row">
+            <div class="col-xs-6"><a class="btn btn-danger form-control" href="{{ route('login') }}">{{ __('common.back') }}</a></div>
+            <div class="col-xs-6"><button type="submit" class="btn btn-primary form-control">{{ __('auth.reset_password_title') }}</button></div>
+        </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+        <p>- {{ __('auth.or') }} -</p>
+
+        @foreach (\Config::get('app.locale_flags') as $key => $value)
+            @if (\Session::get('language') != $key)
+                <a href="{{ route('language', $key) }}" class="btn btn-block btn-social {{ $value }} btn-flat"><i
+                            class="fa fa-flag"></i> {{ __('auth.'.$key) }}</a>
+            @endif
+        @endforeach
     </div>
-</div>
+
 @endsection

@@ -4,14 +4,14 @@
 
     <p class="login-box-msg">{{ __('auth.sign_in') }}</p>
 
-    @if (isset($error))
+    @if ($errors->has('password'))
         <div class="alert alert-danger">{{ __('auth.wrong_password') }}</div>
     @endif
 
     <form method="POST" role="form" action="{{ route('login') }}">
         {{ csrf_field() }}
         <div class="form-group has-feedback">
-            <input id="email" type="email" class="form-control" placeholder="{{ __('auth.email') }}"
+            <input id="email" type="email" name="email" class="form-control" placeholder="{{ __('auth.email') }}"
                    value="{{ old('email') }}" required autofocus>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
@@ -40,7 +40,7 @@
 
         @foreach (\Config::get('app.locale_flags') as $key => $value)
             @if (\Session::get('language') != $key)
-            <a href="{{ route('language', $key) }}" class="btn btn-block btn-social {{ $value }} btn-flat"><i
+            <a href="{{ route('language', $key) }}" class="btn btn-block btn-social btn-facebook btn-flat"><i
                         class="fa fa-flag"></i> {{ __('auth.'.$key) }}</a>
             @endif
         @endforeach
@@ -53,8 +53,8 @@
     <script>
         $(function () {
             $('input').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
                 increaseArea: '20%'
             });
         });

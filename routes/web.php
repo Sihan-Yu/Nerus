@@ -25,5 +25,5 @@ Route::get('/language/{language}', ['as' => 'language', 'uses' => 'LanguageContr
 
 
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
