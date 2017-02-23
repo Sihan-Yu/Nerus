@@ -11,12 +11,31 @@ use League\Flysystem\Exception;
 
 class UserController extends Controller
 {
+
+    /**
+     * Main page with the list of the users
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getList()
+    {
+        $users = User::all();
+        return view('users.index', ['users' => $users]);
+    }
+
+    public function showProfile($userId)
+    {
+        $user = User::find($userId);
+        return view('users.profile', ['user' => $user]);
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public  function  createUser()
     {
-        return view('user.create');
+        $users = User::all();
+        return view('users.create', ['users' => $users]);
     }
 
 
@@ -35,7 +54,7 @@ class UserController extends Controller
             User::create($credentials);
         }
 
-        return redirect(route('user.store'));
+        return redirect(route('users.store'));
     }
 
     protected function generatePassword($length = 8) {
@@ -49,4 +68,5 @@ class UserController extends Controller
 
         return $result;
     }
+
 }
