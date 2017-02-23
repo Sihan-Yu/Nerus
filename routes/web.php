@@ -22,8 +22,8 @@ Auth::routes();
  */
 
 Route::get('/language/{language}', ['as' => 'language', 'uses' => 'LanguageController@setLanguage']);
-
+Route::get('/user/create', ['as' => 'user.create', 'uses' => 'UserController@createUser']);
+Route::post('/user/create', ['as' => 'user.store', 'uses' => 'UserController@storeUser']);
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
-
