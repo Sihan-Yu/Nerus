@@ -23,6 +23,13 @@ Auth::routes();
 
 Route::get('/language/{language}', ['as' => 'language', 'uses' => 'LanguageController@setLanguage']);
 
+/**
+ * User routes
+ */
+
+Route::get('/users', ['as' => 'user.index', 'uses' => 'UserController@getList']);
+Route::get('/user/{id}', ['as' => 'user.view', 'uses' => 'UserController@showProfile']);
+
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);

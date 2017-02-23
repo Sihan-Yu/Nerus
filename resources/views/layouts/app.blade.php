@@ -40,7 +40,7 @@
 
 </head>
 
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini sidebar-collapse">
 
 <div id="wrapper">
 
@@ -187,11 +187,8 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h1>Page header goes here <small>And small description goes here</small></h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li class="active">Dashboard</li>
-            </ol>
+            @yield('title')
+            @yield('breadcrumbs')
         </section>
 
         <section class="content">
@@ -201,9 +198,11 @@
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>{{ __('common.version') }}</b> {{ \Config('app.version') }} <a href="#"><small class="text-gray">{{ __('common.see_changelog') }}</small></a>
+            <b>{{ __('common.version') }}</b> {{ \Config('app.version') }} <a href="#">
+                <small class="text-gray">{{ __('common.see_changelog') }}</small>
+            </a>
         </div>
-        <strong>Copyright bla bla</strong>
+        <strong>asdd</strong>
     </footer>
 
 </div>
@@ -213,7 +212,7 @@
 </form>
 
 
-        <!-- Scripts -->
+<!-- Scripts -->
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>

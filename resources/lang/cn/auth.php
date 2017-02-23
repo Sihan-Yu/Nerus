@@ -22,6 +22,7 @@ return [
     'login' => '签到',
     'cn' => '切换到中文',
     'en' => 'Use English instead',
+    'pt' => 'Mude para Português',
     'wrong_password' => '提供的凭据不正确',
     'or' => '或',
     'reset_password' => '忘记密码了吗？',
