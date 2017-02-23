@@ -8,5 +8,6 @@ return [
     'name' => 'Nome',
     'creation_date' => 'Criado em',
     'activated' => 'Activado',
-    'roles' => 'Roles'
+    'roles' => 'Roles',
+    'create_user' => 'Criar Usuário'
 ];
