@@ -16,6 +16,7 @@
  */
 
 Auth::routes();
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 /**
  * Language routes
@@ -24,13 +25,22 @@ Auth::routes();
 Route::get('/language/{language}', ['as' => 'language', 'uses' => 'LanguageController@setLanguage']);
 
 /**
- * User routes
+ * Admin routes
  */
 
-Route::get('/users', ['as' => 'user.index', 'uses' => 'UserController@getList']);
-Route::get('/user/create', ['as' => 'user.create', 'uses' => 'UserController@createUser']);
-Route::get('/user/{id}', ['as' => 'user.view', 'uses' => 'UserController@showProfile']);
-Route::post('/user/create', ['as' => 'user.store', 'uses' => 'UserController@storeUser']);
+Route::group(['prefix' => 'admin', 'namespace' => 'Users', 'middleware' => 'auth'], function () {
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
+    // User routes
+    Route::group(['prefix' => 'user'], function () {
+
+        Route::get('list', ['as' => 'user.index', 'uses' => 'UserController@index']);
+        Route::get('create', ['as' => 'user.create', 'uses' => 'UserController@create']);
+        Route::post('create', ['as' => 'user.store', 'uses' => 'UserController@store']);
+
+    });
+
+});
+
+// User profile route
+Route::get('/profile/{id}', ['as' => 'user.view', 'uses' => 'Users\UserController@show', 'middleware' => 'auth']);
+Route::get('/audit', ['as' => 'audit.trail', 'uses' => 'Users\AuditTrailController@index', 'middleware' => 'auth']);

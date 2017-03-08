@@ -1,9 +1,19 @@
 @extends('layouts.app')
 
-@include('layouts.parts.page_title', ['title' => __('profile.user_profile'), 'description' => __('profile.create_user')])
+@include('layouts.parts.page_title', ['title' => __('profile.create_user'), 'description' => __('profile.create_user_description')])
 @include('layouts.parts.breadcrumbs', ['breadcrumbs' => [0 => ['text' => __('profile.users'), 'icon' => 'fa fa-user', 'route' => route('user.index'), 'active' => 0], 1 => ['text' => __('profile.create_user'), 'icon' => '', 'route' => route('user.create'), 'active' => 1]]])
 
 @section('content')
+
+    @if (count($errors->all()))
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-ban"></i> {{ __('validation.error') }}</h4>
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
 
     <div class="row"><!--vertical margins of the box-->
         <div class="col-md-3"> <!--horizontal margins of the box-->
@@ -15,24 +25,27 @@
                 </div>
                 <div class="panel-body">
                     <form action="{{ route('user.store') }}" method="post">
-                        {{csrf_field()}}
+                        {{ csrf_field() }}
                         <div class="form-group">
 
                             <div class="form-group has-feedback">
-                                <input id="name" type="name" name="name" class="form-control" placeholder="{{ __('profile.name') }}"
+                                <input id="name" type="text" name="name" class="form-control"
+                                       placeholder="{{ __('profile.name') }}"
                                        value="{{ old('name') }}" maxlength="20" minlength="2" required autofocus>
                                 <span class="fa fa-user form-control-feedback"></span>
                             </div>
 
                             <div class="form-group has-feedback">
-                                <input id="email" type="email" name="email" class="form-control" placeholder="{{ __('auth.email') }}"
-                                       value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" name="email" class="form-control"
+                                       placeholder="{{ __('auth.email') }}"
+                                       value="{{ old('email') }}" required>
                                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                             </div>
 
                             <input type="submit" class="btn btn-primary btn-flat form-control"
                                    name="submit"
                                    value="Submit">
+
                         </div>
                     </form>
                 </div>
