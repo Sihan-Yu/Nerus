@@ -19,7 +19,7 @@
                         <div class="form-group">
 
                             <div class="form-group has-feedback">
-                                <input id="name" type="name" name="name" class="form-control" placeholder="{{ __('profile.name') }}"
+                                <input id="name" type="text" name="name" class="form-control" placeholder="{{ __('profile.name') }}"
                                        value="{{ old('name') }}" maxlength="20" minlength="2" required autofocus>
                                 <span class="fa fa-user form-control-feedback"></span>
                             </div>
