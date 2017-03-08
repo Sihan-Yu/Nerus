@@ -17,13 +17,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getList()
+    public function index()
     {
         $users = User::all();
         return view('users.index', ['users' => $users]);
     }
 
-    public function showProfile($userId)
+    public function show($userId)
     {
         $user = User::find($userId);
         return view('users.profile', ['user' => $user]);
@@ -32,14 +32,14 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public  function  createUser()
+    public  function  create()
     {
         $users = User::all();
         return view('users.create', ['users' => $users]);
     }
 
 
-    public function storeUser(UserCreateRequest $request)
+    public function store(UserCreateRequest $request)
     {
         $credentials = $request->only('email','name');
         $generatedpass = $this->generatePassword(); // un hashed generated password to send via email

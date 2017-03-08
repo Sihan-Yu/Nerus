@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserCreateRequest extends FormRequest
+class CustomerContactCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UserCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,8 +24,14 @@ class UserCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:2|max:50',
-            'email' =>'required|email',
+            //
+            'en_name' => 'required|min:2',
+            'cn_name' => 'nullable|min:2',
+            'position' => 'nullable',
+            'tel' => 'nullable|numeric',
+            'mob' => 'nullable|numeric',
+            'fax' => 'nullable|numeric',
+            'email' => 'nullable|email',
         ];
     }
 }
