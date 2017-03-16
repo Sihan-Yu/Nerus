@@ -148,40 +148,8 @@
                 </div>
             </form>
 
-            <ul class="sidebar-menu">
-                <li class="header">NAVIGATION</li>
-                <li class="active">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    </a>
-                </li>
+            @include('layouts.parts.menu')
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-suitcase"></i> <span>Orders</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="active"><a href="index.html"><i class="fa fa-plus"></i> Create Order</a></li>
-                        <li><a href="index2.html"><i class="fa fa-list"></i> Order List</a></li>
-                    </ul>
-                </li>
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-compass"></i> <span>CRM</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="active"><a href="index.html"><i class="fa fa-plus"></i> Create Customer</a></li>
-                        <li><a href="index2.html"><i class="fa fa-list"></i> Customer List</a></li>
-                    </ul>
-                </li>
-            </ul>
         </section>
     </aside>
 
@@ -192,6 +160,15 @@
         </section>
 
         <section class="content">
+            @if (count($errors->all()))
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-ban"></i> {{ __('validation.error') }}</h4>
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             @yield('content')
         </section>
     </div>
@@ -202,7 +179,7 @@
                 <small class="text-gray">{{ __('common.see_changelog') }}</small>
             </a>
         </div>
-        <strong>asdd</strong>
+        <strong>{{ __('nerus.copyright') }}</strong>
     </footer>
 
 </div>
@@ -218,6 +195,7 @@
 <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="/plugins/fastclick/fastclick.js"></script>
 <script src="/js/app.min.js"></script>
+@yield('scripts')
 
 </body>
 </html>

@@ -11,7 +11,7 @@
                     <h3 class="box-title">{{ __('profile.users') }}</h3>
 
                     <div class="box-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
+                        <div class="input-group input-group-sm" style="width: 250px;">
                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
                             <div class="input-group-btn">
@@ -41,6 +41,7 @@
                         @endforeach
                     </table>
                 </div>
+
             </div>
         </div>
     </div>

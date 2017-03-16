@@ -8,12 +8,14 @@ use Illuminate\Console\Command;
 
 class RoleCreateCommand extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'role:create';
+
     /**
      * @var RoleCreateRequest array
      */
@@ -24,12 +26,11 @@ class RoleCreateCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Creates a new role';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
+     * RoleCreateCommand constructor.
+     * @param RoleCreateRequest $role
      */
     public function __construct(RoleCreateRequest $role)
     {
@@ -44,11 +45,18 @@ class RoleCreateCommand extends Command
      */
     public function handle()
     {
+
         //Logic handling the creation of a new role
-            $newRole = new Role();
-            $newRole->name = $role['name'];
-            $newRole->display_name = $role['lang_string'];//optional
-            $newRole->description = $role['description'];//optional
-            $newRole->save();
+        $newRole = new Role();
+        $newRole->name = $this->role['language-string'];
+        $newRole->description = $this->role['description'];
+
+        // Returns new role created if it saved successfully, otherwise returns false
+        if ($newRole->save()) {
+            return $newRole;
+        }
+
+        return false;
+
     }
 }

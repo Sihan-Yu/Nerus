@@ -26,10 +26,11 @@
 
         @foreach (\Config::get('app.locale_flags') as $key => $value)
             @if (\Session::get('language') != $key)
-                <a href="{{ route('language', $key) }}" class="btn btn-block btn-social {{ $value }} btn-flat"><i
+                <a href="{{ route('language', $key) }}" class="btn btn-block btn-social btn-facebook btn-flat"><i
                             class="fa fa-flag"></i> {{ __('auth.'.$key) }}</a>
             @endif
         @endforeach
+
     </div>
 
 @endsection

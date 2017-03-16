@@ -4,12 +4,14 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use OwenIt\Auditing\Auditable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable;
 
+    use Notifiable;
+    use Auditable;
     use EntrustUserTrait;
 
     /**
@@ -18,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'isactive'
     ];
 
     /**
@@ -29,5 +31,26 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Relationship with the user details table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function details()
+    {
+        return $this->belongsTo(UserDetails::class, 'user_id');
+    }
+
+    /**
+     * Generates a random password for temporary passwords
+     *
+     * @param int $bytes
+     * @return string
+     */
+    public static function generateRandomPassword($bytes = 4)
+    {
+        return bin2hex(openssl_random_pseudo_bytes($bytes));
+    }
 
 }
