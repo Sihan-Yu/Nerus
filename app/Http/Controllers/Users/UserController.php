@@ -63,7 +63,7 @@ class UserController extends Controller
 
         $result = dispatch(new UserRegistrationCommand($request));
 
-        dd($result);
+        // todo: this?
 
     }
 

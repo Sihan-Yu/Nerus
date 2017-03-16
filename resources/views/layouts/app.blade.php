@@ -160,6 +160,15 @@
         </section>
 
         <section class="content">
+            @if (count($errors->all()))
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-ban"></i> {{ __('validation.error') }}</h4>
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             @yield('content')
         </section>
     </div>
@@ -170,7 +179,7 @@
                 <small class="text-gray">{{ __('common.see_changelog') }}</small>
             </a>
         </div>
-        <strong>asdd</strong>
+        <strong>{{ __('nerus.copyright') }}</strong>
     </footer>
 
 </div>
@@ -186,6 +195,7 @@
 <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="/plugins/fastclick/fastclick.js"></script>
 <script src="/js/app.min.js"></script>
+@yield('scripts')
 
 </body>
 </html>

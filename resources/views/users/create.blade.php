@@ -5,18 +5,8 @@
 
 @section('content')
 
-    @if (count($errors->all()))
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="icon fa fa-ban"></i> {{ __('validation.error') }}</h4>
-            @foreach ($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
-    @endif
-
-    <div class="row"><!--vertical margins of the box-->
-        <div class="col-md-3"> <!--horizontal margins of the box-->
+    <div class="row">
+        <div class="col-md-3">
             <div class="box">
                 <div class="panel-heading">
                     <strong>
