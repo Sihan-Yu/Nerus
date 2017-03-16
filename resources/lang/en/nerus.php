@@ -13,5 +13,6 @@ return [
     */
 
     'title' => 'Nerus - BergJet',
+    'copyright' => 'All rights reserved to BergJet, 2017'
 
 ];

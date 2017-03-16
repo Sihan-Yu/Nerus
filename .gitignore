@@ -20,5 +20,8 @@ bootstrap/cache/
 .env.php
 .env
 
+# Git stuff
+.gitignore
+
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/

@@ -13,6 +13,7 @@ return [
     */
 
     'name' => 'Nerus',
+    'version' => '0.1a',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +78,7 @@ return [
     |
     */
 
-    'locales' => ['en', 'cn'],
+    'locales' => ['en', 'cn', 'pt'],
 
     /*
     |--------------------------------------------------------------------------
@@ -91,6 +92,17 @@ return [
     */
 
     'fallback_locale' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Locale Stylization
+    |--------------------------------------------------------------------------
+    |
+    | Defines the style/colors for locales
+    |
+    */
+
+    'locale_flags' => ['en' => 'famfamfam-flag-gb', 'cn' => 'famfamfam-flag-cn', 'pt' => 'famfamfam-flag-pt'],
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +189,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Custom Service Providers
+        'Lavary\Menu\ServiceProvider',
+        OwenIt\Auditing\AuditingServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
+
     ],
 
     /*
@@ -225,6 +242,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Menu' => 'Lavary\Menu\Facade',
+        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 
