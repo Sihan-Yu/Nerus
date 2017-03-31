@@ -192,7 +192,7 @@ return [
         // Custom Service Providers
         'Lavary\Menu\ServiceProvider',
         OwenIt\Auditing\AuditingServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class,
+        Laratrust\LaratrustServiceProvider::class,
 
     ],
 
@@ -243,7 +243,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Menu' => 'Lavary\Menu\Facade',
-        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
 
     ],
 

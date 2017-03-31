@@ -17,21 +17,21 @@
                     <ul class="list-group list-group-unbordered">
 
                         <li class="list-group-item">
-                            <b>Created on</b> <a class="pull-right">{{ $role->created_at }}</a>
+                            <b>{{ __('permissions.created_on') }}</b> <a class="pull-right">{{ $role->created_at }}</a>
                         </li>
 
                         <li class="list-group-item">
-                            <b>Users</b> <a class="pull-right">123123</a>
+                            <b>{{ __('permissions.users_number') }}</b> <a class="pull-right">{{ count($users) }}</a>
                         </li>
 
                         <li class="list-group-item">
-                            <b>Permissions</b> <a class="pull-right">123123</a>
+                            <b>{{ __('permissions.permission_number') }}</b> <a class="pull-right">{{ count($permissions) }}</a>
                         </li>
 
                     </ul>
 
-                    <a href="#" class="btn btn-primary btn-block">Send Mass Message</a>
-                    <a href="#" class="btn btn-danger btn-block">Delete</a>
+                    @permission('mail:mass')<a href="#" class="btn btn-primary btn-block">{{ __('permissions.send_mass_mail') }}</a>@endpermission
+                    @permission('role:delete')<a href="#" class="btn btn-danger btn-block">{{ __('permissions.delete') }}</a>@endpermission
                 </div>
             </div>
         </div>
@@ -40,10 +40,10 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active">
-                        <a href="#users" data-toggle="tab">Users</a>
+                        <a href="#users" data-toggle="tab">{{ __('permissions.users') }}</a>
                     </li>
                     <li>
-                        <a href="#permissions" data-toggle="tab">Permissions</a>
+                        <a href="#permissions" data-toggle="tab">{{ __('permissions.permissions') }}</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -55,6 +55,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
     </div>

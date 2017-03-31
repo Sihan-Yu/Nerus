@@ -1,7 +1,9 @@
 <?php namespace App;
 
-use Zizaco\Entrust\EntrustPermission;
+use Laratrust\LaratrustPermission;
+use OwenIt\Auditing\Auditable;
 
-class Permission extends EntrustPermission
+class Permission extends LaratrustPermission
 {
+    use Auditable;
 }

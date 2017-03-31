@@ -22,11 +22,52 @@ class RoleController extends Controller
     public function index($id)
     {
 
+        // Gets the permissions and users assigned to that role
         $role = Role::findOrFail($id);
+        $usersInRole = $role->users;
+        $permissionsInRole = $role->permissions;
 
-        $usersInRole = $role->users(); // TODO this is not really working
+        // Creates a new array to exclude users already in the role to be excluded from the selectbox
+        $users = [];
+        foreach ($usersInRole as $user) {
+            $users[$user->id]['id'] = $user->id;
+            $users[$user->id]['name'] = $user->name;
+        }
 
-        return view('permissions.role', ['role' => $role, 'users' => $usersInRole]);
+        // To populate the drop down to be able to add new users
+        $allUsers = User::orderBy('name')->get();
+
+        // Go through all the users in the role and filter out the ones that are in the role.
+        // This is to avoid adding someone already in the role.
+        $filteredAllUsers = [];
+        foreach ($allUsers as $user) {
+            if (!array_key_exists($user->id, $users)) {
+                $filteredAllUsers[$user->id]['id'] = $user->id;
+                $filteredAllUsers[$user->id]['name'] = $user->name;
+            }
+        }
+
+        $permissions = [];
+        foreach ($permissionsInRole as $permission) {
+            $permissions[$permission->id]['id'] = $permission->id;
+            $permissions[$permission->id]['name'] = $permission->name;
+        }
+
+        $allPermissions = Permission::orderBy('name')->get();
+
+        $filteredPermissions = [];
+        foreach ($allPermissions as $permission) {
+            if (!array_key_exists($permission->id, $permissions)) {
+                $filteredPermissions[$permission->id]['id'] = $permission->id;
+                $filteredPermissions[$permission->id]['name'] = $permission->name;
+            }
+        }
+
+        $allUsers = $filteredAllUsers;
+        $allPermissions = $filteredPermissions;
+
+        return view('permissions.role', ['role' => $role, 'users' => $usersInRole, 'allusers' => $allUsers, 'permissions' => $permissionsInRole, 'allpermissions' => $allPermissions]);
+
     }
 
     /**
@@ -48,6 +89,38 @@ class RoleController extends Controller
         // There was an error, ask the user to try again
         return redirect()->back()->withErrors([]);
 
+    }
+
+    /**
+     * Attaches a role to a user
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function attach(Request $request)
+    {
+        $role = Role::findOrFail($request->input('role_id'));
+        $user = User::findOrFail($request->input('user'));
+
+        $user->attachRole($role);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Detach a role from a user
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function detach(Request $request)
+    {
+        $role = Role::findOrFail($request->input('role_id'));
+        $user = User::findOrFail($request->input('user_id'));
+
+        $user->detachRole($role);
+
+        return redirect()->back();
     }
 
 }
