@@ -3,22 +3,22 @@
     <tr>
         <th>ID</th>
         <th>{{ __('profile.name') }}</th>
-        <th>{{ __('profile.username') }}</th>
+        <th>{{ __('permissions.description') }}</th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    @foreach ($users as $user)
+    @foreach ($permissions as $permission)
         <tr>
-            <td>{{ $user->id }}</td>
-            <td><a href="{{ route('user.view', $user->id) }}">{{ $user->name }}</a></td>
-            <td>{{ $user->email }}</td>
+            <td>{{ $permission->id }}</td>
+            <td>{{ $permission->name }}</td>
+            <td>{{ $permission->description }}</td>
             <td class="pull-right">
-                @permission('role:user:delete')
-                <form action="{{ route('role.detach') }}" method="post">
+                @permission('role:permission:delete')
+                <form action="{{ route('permissions.detach') }}" method="post">
                     {{ csrf_field() }}
                     <input type="text" hidden="hidden" name="role_id" value="{{ $role->id }}">
-                    <input type="text" hidden="hidden" name="user_id" value="{{ $user->id }}">
+                    <input type="text" hidden="hidden" name="permission_id" value="{{ $permission->id }}">
                     <button type="submit" class="btn btn-xs btn-danger btn-flat"><i
                                 class="glyphicon glyphicon-minus"></i></button>
                 </form>@endpermission
@@ -28,15 +28,14 @@
     </tbody>
 </table>
 
-@if (count($allusers) > 0)
-    @permission('role:user:add')
-    <form action="{{ route('role.attach') }}" method="post">
+@if (count($allpermissions) > 0)
+    <form action="{{ route('permissions.attach') }}" method="post">
         {{ csrf_field() }}
         <div class="input-group">
             <input type="text" hidden="hidden" name="role_id" value="{{ $role->id }}">
-            <select class="form-control select2" name="user">
-                @foreach ($allusers as $individuals)
-                    <option value="{{ $individuals['id'] }}">{{ $individuals['name'] }}</option>
+            <select class="form-control select2 width" name="permission">
+                @foreach ($allpermissions as $permission)
+                    <option value="{{ $permission['id'] }}">{{ $permission['name'] }}</option>
                 @endforeach
             </select>
             <span class="input-group-btn">
@@ -45,16 +44,6 @@
                     </span>
         </div>
     </form>
-    @endpermission
 @else
-    <div class="label label-success">{{ __('permissions.all_users') }}</div>
+    <div class="label label-success">{{ __('permissions.all_permissions') }}</div>
 @endif
-
-
-@section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.select2').select2();
-        });
-    </script>
-@endsection

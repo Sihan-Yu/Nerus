@@ -18,8 +18,9 @@
 Auth::routes();
 
 /**
- * Default Routes
+ * Home routes
  */
+
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
@@ -51,6 +52,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('create', ['as' => 'permissions.create', 'uses' => 'PermissionsController@create']);
         Route::post('create', ['as' => 'permissions.store', 'uses' => 'PermissionsController@store']);
 
+        Route::post('attach', ['as' => 'permissions.attach', 'uses' => 'PermissionsController@attach']);
+        Route::post('detach', ['as' => 'permissions.detach', 'uses' => 'PermissionsController@detach']);
+
     });
 
     // Role
@@ -58,6 +62,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
         Route::get('{id}', ['as' => 'role.index', 'uses' => 'RoleController@index']);
         Route::post('create', ['as' => 'role.store', 'uses' => 'RoleController@store']);
+
+        Route::post('attach', ['as' => 'role.attach', 'uses' => 'RoleController@attach']);
+        Route::post('detach', ['as' => 'role.detach', 'uses' => 'RoleController@detach']);
 
     });
 

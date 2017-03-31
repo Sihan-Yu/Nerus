@@ -1,10 +1,9 @@
 <?php namespace App;
 
-use Zizaco\Entrust\EntrustRole;
+use Laratrust\LaratrustRole;
 use OwenIt\Auditing\Auditable;
 
-class Role extends EntrustRole
+class Role extends LaratrustRole
 {
     use Auditable;
-
 }

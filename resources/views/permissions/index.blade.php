@@ -34,6 +34,15 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="callout callout-info">
+                        <h4>{{ __('permissions.reminder') }}</h4>
+
+                        <p>{{ __('permissions.reminder_text') }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-6">
@@ -66,13 +75,5 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="callout callout-info">
-                <h4>{{ __('permissions.reminder') }}</h4>
 
-                <p>{{ __('permissions.reminder_text') }}</p>
-            </div>
-        </div>
-    </div>
 @endsection

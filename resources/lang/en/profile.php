@@ -6,6 +6,7 @@ return [
     'user_profile_description' => 'Detailed information of :name',
     'users_description' => 'List of all users',
     'name' => 'Name',
+    'username' => 'Username',
     'creation_date' => 'Created on',
     'activated' => 'Activated',
     'roles' => 'Roles',

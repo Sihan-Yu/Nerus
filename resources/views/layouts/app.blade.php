@@ -22,6 +22,9 @@
     <!-- FamFamFam Flags -->
     <link rel="stylesheet" href="/css/flags/famfamfam-flags.css">
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/plugins/select2/select2.css">
+
     <!-- Theme -->
     <link rel="stylesheet" href="/css/AdminLTE.css">
     <link rel="stylesheet" href="/css/skins/skin-green.css">
@@ -194,6 +197,7 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="/plugins/fastclick/fastclick.js"></script>
+<script src="/plugins/select2/select2.full.js"></script>
 <script src="/js/app.min.js"></script>
 @yield('scripts')
 

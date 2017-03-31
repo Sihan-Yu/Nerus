@@ -23,12 +23,12 @@ class PermissionsController extends Controller
     public function index()
     {
         $permissions = Permission::all();
-        $roles = Role::all();
+        $roles = Role::orderBy('name')->get();
         return view('permissions.index', ['roles' => $roles, 'permissions' => $permissions]);
     }
 
     /**
-     * Dispatches job to  create a new role
+     * Dispatches job to  create a new roles
      *
      * @param PermissionCreateRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -41,6 +41,24 @@ class PermissionsController extends Controller
         if ($bus) {
             return redirect(route('permissions.index'));
         }
+
+    }
+
+    /**
+     * Attaches a permission to a role
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function attach(Request $request)
+    {
+
+        $role = Role::findOrFail($request->input('role_id'));
+        $permission = Permission::findOrFail($request->input('permission'));
+
+        $role->attachPermission($permission);
+
+        return redirect()->back();
 
     }
 
