@@ -59,12 +59,19 @@
                                     <th>ID</th>
                                     <th>{{ __('profile.name') }}</th>
                                     <th>{{ __('permissions.description') }}</th>
+                                    <th></th>
                                 </tr>
                                 @foreach ($permissions as $permission)
                                     <tr>
                                         <td>{{ $permission->id }}</td>
                                         <td>{{ $permission->name }}</td>
                                         <td>{{ $permission->description }}</td>
+                                        <td class="pull-right"><form action="{{ route('permissions.delete') }}" method="post">
+                                                {{ csrf_field() }}
+                                                <input type="text" hidden="hidden" name="permission_id" value="{{ $permission->id }}">
+                                                <button type="submit" class="btn btn-xs btn-danger btn-flat"><i
+                                                            class="fa fa-trash"></i></button>
+                                            </form></td>
                                     </tr>
                                 @endforeach
                                 @permission('permission:create')<tr>@include('permissions.parts.create_permission')</tr>@endpermission

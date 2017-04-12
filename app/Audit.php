@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Departments extends Model
+class Audit extends Model
 {
 
     /**
@@ -12,6 +12,6 @@ class Departments extends Model
      *
      * @var string
      */
-    protected $table = 'departments';
+    protected $table = 'audits';
 
 }

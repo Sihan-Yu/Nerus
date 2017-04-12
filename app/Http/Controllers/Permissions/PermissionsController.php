@@ -45,6 +45,22 @@ class PermissionsController extends Controller
     }
 
     /**
+     * Remove a permission
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function remove(Request $request)
+    {
+
+        $permission = Permission::findOrFail($request->input('permission_id'));
+        $permission->delete();
+
+        return redirect()->back();
+
+    }
+
+    /**
      * Attaches a permission to a role
      *
      * @param Request $request
@@ -57,6 +73,24 @@ class PermissionsController extends Controller
         $permission = Permission::findOrFail($request->input('permission'));
 
         $role->attachPermission($permission);
+
+        return redirect()->back();
+
+    }
+
+    /**
+     * Detaches a permission from a role
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function detach(Request $request)
+    {
+
+        $role = Role::findOrFail($request->input('role_id'));
+        $permission = Permission::findOrFail($request->input('permission_id'));
+
+        $role->detachPermission($permission);
 
         return redirect()->back();
 

@@ -20,7 +20,7 @@
                     <input type="text" hidden="hidden" name="role_id" value="{{ $role->id }}">
                     <input type="text" hidden="hidden" name="user_id" value="{{ $user->id }}">
                     <button type="submit" class="btn btn-xs btn-danger btn-flat"><i
-                                class="glyphicon glyphicon-minus"></i></button>
+                                class="fa fa-trash"></i></button>
                 </form>@endpermission
             </td>
         </tr>

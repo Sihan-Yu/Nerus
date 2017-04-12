@@ -188,6 +188,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ViewServiceProvider::class,
 
         // Custom Service Providers
         'Lavary\Menu\ServiceProvider',
@@ -242,7 +243,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Menu' => 'Lavary\Menu\Facade',
+        'LMenu' => 'Lavary\Menu\Facade',
         'Laratrust'   => Laratrust\LaratrustFacade::class,
 
     ],

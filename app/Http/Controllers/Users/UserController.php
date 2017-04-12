@@ -26,7 +26,20 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index', ['users' => $users]);
+
+        // Getting roles for the users
+        $roles = [];
+        foreach ($users as $user) {
+
+            $userRole = User::findOrFail($user->id)->roles;
+
+            foreach ($userRole as $role) {
+                $roles[$user->id][$role->id] = $role->name;
+            }
+
+        }
+
+        return view('users.index', ['users' => $users, 'roles' => $roles]);
     }
 
     /**
