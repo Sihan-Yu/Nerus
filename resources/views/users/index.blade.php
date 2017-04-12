@@ -36,7 +36,9 @@
                                 <td><a href="{{ route('user.view', $user->id) }}">{{ $user->name }}</a></td>
                                 <td>{{ $user->created_at }}</td>
                                 <td><span class="label label-success">Active</span></td>
-                                <td>TODO</td>
+                                <td>@foreach ($roles[$user->id] as $role)
+                                        {{ $role }}
+                                    @endforeach</td>
                             </tr>
                         @endforeach
                     </table>

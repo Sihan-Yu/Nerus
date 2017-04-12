@@ -62,42 +62,26 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
 
-                    @foreach (\Config::get('app.locale_flags') as $key => $value)
-                        <li>
-                            <a href="{{ route('language', $key) }}">
-                                <i class="{{ $value }}"></i>
-                                @if (\Session::get('language') == $key) <span
-                                        class="label label-success">✓</span> @endif
-                            </a>
-                        </li>
-                    @endforeach
-
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-exclamation-triangle"></i>
-                            <span class="label label-danger">4</span>
+                            <i class="fa fa-language"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">4 messages</li>
                             <li>
                                 <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="http://m.c.lnkd.licdn.com/mpr/mpr/shrinknp_100_100/p/8/005/01e/105/25bbe2d.jpg"
-                                                     class="img-circle"
-                                                     alt="User Image">
-                                            </div>
-                                            <h4>Filipe Neves</h4>
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            <p>Testing...</p>
-                                        </a>
-                                    </li>
+                                    @foreach (\Config::get('app.locale_flags') as $key => $value)
+                                        <li>
+                                            <a href="{{ route('language', $key) }}">
+                                                <i class="{{ $value }}"></i> &nbsp;&nbsp; @if (\Session::get('language') == $key) <b>{{ __('auth.' . $key) }}</b> @else {{ __('auth.' . $key) }} @endif
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
-                            <li class="footer"><a href="#">See all messages</a></li>
                         </ul>
                     </li>
+
+                    @include('layouts.parts.notifications')
 
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">

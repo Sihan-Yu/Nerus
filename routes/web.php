@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('list', ['as' => 'permissions.index', 'uses' => 'PermissionsController@index']);
         Route::get('create', ['as' => 'permissions.create', 'uses' => 'PermissionsController@create']);
         Route::post('create', ['as' => 'permissions.store', 'uses' => 'PermissionsController@store']);
+        Route::post('delete', ['as' => 'permissions.delete', 'uses' => 'PermissionsController@delete']);
 
         Route::post('attach', ['as' => 'permissions.attach', 'uses' => 'PermissionsController@attach']);
         Route::post('detach', ['as' => 'permissions.detach', 'uses' => 'PermissionsController@detach']);

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Permissions;
 
+use App\Console\Commands\AttachRoleCommand;
 use App\Console\Commands\RoleCreateCommand;
+use App\Console\Commands\DetachRoleCommand;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttachRoleRequest;
+use App\Http\Requests\DetachRoleRequest;
 use App\Http\Requests\RoleCreateRequest;
 use App\Role;
 use App\Permission;
@@ -92,35 +96,33 @@ class RoleController extends Controller
     }
 
     /**
-     * Attaches a role to a user
+     * Attach a role to a user
      *
-     * @param Request $request
+     * @param AttachRoleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function attach(Request $request)
+    public function attach(AttachRoleRequest $request)
     {
-        $role = Role::findOrFail($request->input('role_id'));
-        $user = User::findOrFail($request->input('user'));
 
-        $user->attachRole($role);
+        $bus = dispatch(new AttachRoleCommand($request));
 
         return redirect()->back();
+
     }
 
     /**
      * Detach a role from a user
      *
-     * @param Request $request
+     * @param DetachRoleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function detach(Request $request)
+    public function detach(DetachRoleRequest $request)
     {
-        $role = Role::findOrFail($request->input('role_id'));
-        $user = User::findOrFail($request->input('user_id'));
 
-        $user->detachRole($role);
+        $bus = dispatch(new DetachRoleCommand($request));
 
         return redirect()->back();
+
     }
 
 }

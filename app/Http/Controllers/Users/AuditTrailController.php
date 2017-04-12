@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\Audit;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -17,12 +18,11 @@ class AuditTrailController extends Controller
      */
     public function index()
     {
-        $user = User::find(Auth::user()->id);
-        $trails = $user->audits()->with('user')->get();
 
-        // todo: pagination
+        $trails = Audit::where('user_id', Auth::user()->getAuthIdentifier())->orderBy('created_at', 'DESC')->get();
 
         return view('users.audit', ['trails' => $trails]);
+
     }
 
     // todo: Add ability to see all trails by users once roles are created

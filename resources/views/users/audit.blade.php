@@ -18,9 +18,11 @@
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
-                            <th>{{ __('profile.transaction_id') }}</th>
+                            <th>{{ __('profile.type') }}</th>
+                            <th>{{ __('profile.ip_address') }}</th>
                             <th>{{ __('profile.creation_date') }}</th>
                             <th>{{ __('profile.audit_type') }}</th>
+                            <th>{{ __('profile.change') }}</th>
                         </tr>
                         @if (!$trails)
                             <tr>
@@ -31,9 +33,11 @@
                         @else
                             @foreach ($trails as $trail)
                             <tr>
-                                <td>{{ $trail->id }}</td>
+                                <td>{{ __('profile.' . $trail->type) }}</td>
+                                <td>{{ $trail->ip_address }}</td>
                                 <td>{{ $trail->created_at }}</td>
                                 <td>{{ $trail->auditable_type }}</td>
+                                <td>{{ $trail->new }}</td>
                             </tr>
                             @endforeach
                         @endif
