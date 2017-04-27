@@ -23,6 +23,8 @@ return [
     'cn' => '中文',
     'en' => 'English',
     'pt' => 'Português',
+    'dk' => 'Dansk',
+    'pl' => 'Polskie',
     'wrong_password' => 'The credentials provided are not correct.',
     'or' => 'OR',
     'reset_password' => 'Forgot your password? Reset it.',

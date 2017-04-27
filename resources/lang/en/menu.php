@@ -10,6 +10,7 @@ return [
     'navigation_admin' => 'ADMIN NAVIGATION',
     'permissions' => 'Roles & Permissions',
     'users' => 'User Management',
-    'audit' => 'Audit Trail'
+    'audit' => 'Audit Trail',
+    'products' => 'Products'
 
 ];

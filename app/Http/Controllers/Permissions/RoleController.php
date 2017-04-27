@@ -111,7 +111,7 @@ class RoleController extends Controller
     }
 
     /**
-     * Detach a role from a user
+     * Detach a role from a users
      *
      * @param DetachRoleRequest $request
      * @return \Illuminate\Http\RedirectResponse
