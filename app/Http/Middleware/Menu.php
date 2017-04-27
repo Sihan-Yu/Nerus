@@ -52,6 +52,9 @@ class Menu
                 $menu->users->add('permissions', ['route' => 'permissions.index'])->data(['permissions' => 'role:view', 'icon' => 'fa fa-hand-paper-o']);
                 $menu->users->add('audit', ['route' => 'audit.trail'])->data(['permissions' => 'audit:view', 'icon' => 'fa fa-stack-overflow']);
 
+                $menu->add('products', ['route' => 'products.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
+                $menu->products->add('products', ['route' => 'products.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
+
             })->filter(function ($item) {
 
                 if (Auth::user()->can($item->data('permissions'))) {

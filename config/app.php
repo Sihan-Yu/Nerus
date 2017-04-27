@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locales' => ['en', 'cn', 'pt'],
+    'locales' => ['en', 'cn', 'pt', 'pl'],
 
     /*
     |--------------------------------------------------------------------------
@@ -102,7 +102,7 @@ return [
     |
     */
 
-    'locale_flags' => ['en' => 'famfamfam-flag-gb', 'cn' => 'famfamfam-flag-cn', 'pt' => 'famfamfam-flag-pt'],
+    'locale_flags' => ['en' => 'famfamfam-flag-gb', 'cn' => 'famfamfam-flag-cn', 'pt' => 'famfamfam-flag-pt', 'pl' => 'famfamfam-flag-pl'],
 
     /*
     |--------------------------------------------------------------------------

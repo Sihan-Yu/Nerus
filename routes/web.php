@@ -22,7 +22,10 @@ Auth::routes();
  */
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/contacts', ['as' => 'web.contacts', 'uses' => 'HomeController@contacts']);
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'HomeController@dashboard']);
+Route::get('/sendrfq', ['as' => 'send.rfq', 'uses' => 'HomeController@sendRFQ']);
 
 /**
  * Language routes
@@ -58,7 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     });
 
-    // Role
+    // Roles
     Route::group(['prefix' => 'role', 'namespace' => 'Permissions'], function () {
 
         Route::get('{id}', ['as' => 'role.index', 'uses' => 'RoleController@index']);
@@ -66,6 +69,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
         Route::post('attach', ['as' => 'role.attach', 'uses' => 'RoleController@attach']);
         Route::post('detach', ['as' => 'role.detach', 'uses' => 'RoleController@detach']);
+
+    });
+
+    // Products
+    Route::group(['prefix' => 'products', 'namespace' => 'Products'], function () {
+
+        Route::get('list', ['as' => 'products.index', 'uses' => 'ProductController@index']);
 
     });
 

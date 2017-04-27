@@ -9,6 +9,7 @@ use App\User;
 
 class DetachRoleCommand extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
