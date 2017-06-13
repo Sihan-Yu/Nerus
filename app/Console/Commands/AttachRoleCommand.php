@@ -34,7 +34,6 @@ class AttachRoleCommand extends Command
      */
     protected $role;
 
-
     /**
      * Constructor
      *
