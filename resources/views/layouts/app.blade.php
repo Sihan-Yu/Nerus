@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/css/bootstrap.css">
 
@@ -43,7 +46,7 @@
 
 </head>
 
-<body class="hold-transition skin-green sidebar-mini sidebar-collapse">
+<body class="hold-transition skin-green sidebar-mini">
 
 <div id="wrapper">
 
@@ -177,7 +180,6 @@
 
 
 <!-- Scripts -->
-<script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="/plugins/fastclick/fastclick.js"></script>

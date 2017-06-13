@@ -61,6 +61,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     });
 
+    // CRM
+    Route::group(['prefix' => 'crm', 'namespace' => 'CRM'], function () {
+
+        Route::get('list', ['as' => 'crm.index', 'uses' => 'CRMController@index']);
+        Route::get('company/create', ['as' => 'crm.company.create', 'uses' => 'CRMController@companyCreate']);
+        Route::post('company/create', ['as' => 'crm.company.create', 'uses' => 'CRMController@storeCompany']);
+        Route::get('company/{id}', ['as' => 'crm.view', 'uses' => 'CRMController@view']);
+        Route::post('search', ['as' => 'crm.search', 'uses' => 'CRMController@search']);
+        Route::get('contact/create', ['as' => 'crm.contact.create', 'uses' => 'CRMController@contactCreate']);
+
+    });
+
     // Roles
     Route::group(['prefix' => 'role', 'namespace' => 'Permissions'], function () {
 
@@ -76,6 +88,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'products', 'namespace' => 'Products'], function () {
 
         Route::get('list', ['as' => 'products.index', 'uses' => 'ProductController@index']);
+        Route::get('motor', ['as' => 'products.motor', 'uses' => 'MotorController@index']);
+        Route::get('motor/create', ['as' => 'products.motor.add', 'uses' => 'MotorController@create']);
 
     });
 

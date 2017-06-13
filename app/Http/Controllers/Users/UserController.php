@@ -21,6 +21,7 @@ class UserController extends Controller
     /**
      * Main page with the list of the users
      *
+     * @url /admin/user/list
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()

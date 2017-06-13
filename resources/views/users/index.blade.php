@@ -29,6 +29,9 @@
                             <th>{{ __('profile.creation_date') }}</th>
                             <th>{{ __('profile.activated') }}</th>
                             <th>{{ __('profile.roles') }}</th>
+                            @permission('user:delete')
+                            <th></th>
+                            @endpermission
                         </tr>
                         @foreach ($users as $user)
                             <tr>
@@ -36,9 +39,25 @@
                                 <td><a href="{{ route('user.view', $user->id) }}">{{ $user->name }}</a></td>
                                 <td>{{ $user->created_at }}</td>
                                 <td><span class="label label-success">Active</span></td>
-                                <td>@foreach ($roles[$user->id] as $role)
-                                        {{ $role }}
-                                    @endforeach</td>
+                                <td>
+                                    @if (isset($roles[$user->id]))
+                                    @foreach ($roles[$user->id] as $role)
+                                            <span class="label label-primary">{{ __('permissions.role_'.$role) }}</span>
+                                    @endforeach
+                                @endif
+                                </td>
+                                @permission('user:delete')
+                                <td class="pull-right">
+
+                                    <form action="{{ route('permissions.detach') }}" method="post">
+                                        {{ csrf_field() }}
+                                        <input type="text" hidden="hidden" name="role_id" value="{{ $user->id }}">
+                                        <button type="submit" class="btn btn-xs btn-danger btn-flat"><i
+                                                    class="fa fa-trash"></i></button>
+                                    </form>
+
+                                </td>
+                                @endpermission
                             </tr>
                         @endforeach
                     </table>

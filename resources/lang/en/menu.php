@@ -11,6 +11,14 @@ return [
     'permissions' => 'Roles & Permissions',
     'users' => 'User Management',
     'audit' => 'Audit Trail',
-    'products' => 'Products'
+    'products' => 'Products',
+    'crm' => 'CRM',
+    'motors' => 'Motors',
+    'add_motor' => 'Add motor',
+    'fans' => 'Fans',
+    'product_admin' => 'PRODUCT ADMINISTRATION',
+    'list_fans' => 'Fans',
+    'list_motor' => 'Motors',
+    'edit_motor' => 'Edit Motor'
 
 ];

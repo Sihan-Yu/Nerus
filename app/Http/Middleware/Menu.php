@@ -26,7 +26,11 @@ class Menu
             LMenu::make('sidebar', function ($menu) {
 
                 // Dashboard, always on top
-                $menu->add('dashboard', ['route' => 'home'])->data(['permissions' => 'employee', 'icon' => 'fa fa-dashboard']);
+                $menu->add('dashboard', ['route' => 'dashboard'])->data(['permissions' => 'employee', 'icon' => 'fa fa-dashboard']);
+
+                // CRM
+                $menu->add('crm', ['route' => 'crm.index'])->data(['permissions' => 'crm:view', 'icon' => 'fa fa-address-book']);
+                $menu->crm->add('crm', ['route' => 'crm.index'])->data(['permissions' => 'crm:view', 'icon' => 'fa fa-address-book']);
 
                 // Orders
                 //$menu->add('orders', ['route' => 'home'])->data(['permissions' => 'role:see', 'icon' => 'fa fa-list-alt']);
@@ -35,11 +39,25 @@ class Menu
 
             })->filter(function ($item) {
 
-                if (Auth::user()->can($item->data('permissions'))) {
-                    return true;
-                }
+                return Auth::user()->can($item->data('permissions'));
 
-                return false;
+            });
+
+            // Product Menu
+            LMenu::make('productbar', function ($menu) {
+
+                // Motors
+                $menu->add('motors', ['route' => 'products.motor'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-cogs']);
+                $menu->motors->add('list_motor', ['route' => 'products.motor.add'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-list']);
+                $menu->motors->add('add_motor', ['route' => 'products.motor.add'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-plus']);
+                $menu->motors->add('edit_motor', ['route' => 'products.motor.add'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
+
+                $menu->add('fans', ['route' => 'products.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-themeisle']);
+                $menu->fans->add('list_fans', ['route' => 'products.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
+
+            })->filter(function ($item) {
+
+                return Auth::user()->can($item->data('permissions'));
 
             });
 
@@ -52,16 +70,9 @@ class Menu
                 $menu->users->add('permissions', ['route' => 'permissions.index'])->data(['permissions' => 'role:view', 'icon' => 'fa fa-hand-paper-o']);
                 $menu->users->add('audit', ['route' => 'audit.trail'])->data(['permissions' => 'audit:view', 'icon' => 'fa fa-stack-overflow']);
 
-                $menu->add('products', ['route' => 'products.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
-                $menu->products->add('products', ['route' => 'products.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
-
             })->filter(function ($item) {
 
-                if (Auth::user()->can($item->data('permissions'))) {
-                    return true;
-                }
-
-                return false;
+                return Auth::user()->can($item->data('permissions'));
 
             });
 
