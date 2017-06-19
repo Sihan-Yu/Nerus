@@ -11,4 +11,10 @@ class ProductController extends Controller
         return view('products.index');
     }
 
+
+
+    public function fansIndex() {
+        return view('products.fans.index');
+    }
+
 }

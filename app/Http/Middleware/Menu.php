@@ -33,9 +33,9 @@ class Menu
                 $menu->crm->add('crm', ['route' => 'crm.index'])->data(['permissions' => 'crm:view', 'icon' => 'fa fa-address-book']);
 
                 // Orders
-                //$menu->add('orders', ['route' => 'home'])->data(['permissions' => 'role:see', 'icon' => 'fa fa-list-alt']);
-                //$menu->orders->add('create_order', ['route' => 'home'])->data(['permissions' => 'order:create', 'icon' => 'fa fa-plus']);
-                //$menu->orders->add('order_list', ['route' => 'home'])->data(['permissions' => 'order:create', 'icon' => 'fa fa-list']);
+                $menu->add('orders', ['route' => 'home'])->data(['permissions' => 'role:see', 'icon' => 'fa fa-list-alt']);
+                $menu->orders->add('create_order', ['route' => 'home'])->data(['permissions' => 'order:create', 'icon' => 'fa fa-plus']);
+                $menu->orders->add('order_list', ['route' => 'home'])->data(['permissions' => 'order:create', 'icon' => 'fa fa-list']);
 
             })->filter(function ($item) {
 
@@ -52,8 +52,8 @@ class Menu
                 $menu->motors->add('add_motor', ['route' => 'products.motor.add'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-plus']);
                 $menu->motors->add('edit_motor', ['route' => 'products.motor.add'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
 
-                $menu->add('fans', ['route' => 'products.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-themeisle']);
-                $menu->fans->add('list_fans', ['route' => 'products.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
+                $menu->add('fans', ['route' => 'products.fans.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-themeisle']);
+                $menu->fans->add('list_fans', ['route' => 'products.fans.index'])->data(['permissions' => 'products:view', 'icon' => 'fa fa-tag']);
 
             })->filter(function ($item) {
 

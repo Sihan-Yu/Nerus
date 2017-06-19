@@ -91,6 +91,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('motor', ['as' => 'products.motor', 'uses' => 'MotorController@index']);
         Route::get('motor/create', ['as' => 'products.motor.add', 'uses' => 'MotorController@create']);
 
+        Route::get('fans/list', ['as' => 'products.fans.index', 'uses' => 'ProductController@fansIndex']);
+
     });
 
 });
