@@ -25,3 +25,7 @@ bootstrap/cache/
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+
+# OS-specific files
+.DS_Store
+.DS_Store?
